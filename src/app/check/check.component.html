@@ -1,5 +1,12 @@
-<input [(ngModel)]="aux" type="number" name="number" id="number" (keydown.enter)="set()">
+<h5>Select a number and press enter</h5>
+<input [(ngModel)]="aux" type="number" name="number" id="number" (keydown.enter)="set()" placeholder="">
+<button (click)="choice = !choice">{{choice ? 'crescente' : 'descrescente'}}</button>
+<div *ngIf="choice, else elseBlock">
+  {{order('a - b')}}
+</div>
+<ng-template #elseBlock>
+  {{order('b - a')}}
+</ng-template>
 <ul>
   <li *ngFor="let number of numbers">{{ number }}</li>
 </ul>
-
