@@ -1,1 +1,5 @@
-<p>check works!</p>
+<input [(ngModel)]="aux" type="number" name="number" id="number" (keydown.enter)="set()">
+<ul>
+  <li *ngFor="let number of numbers">{{ number }}</li>
+</ul>
+
