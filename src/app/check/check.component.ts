@@ -7,24 +7,25 @@ import { Component } from '@angular/core';
 })
 export class CheckComponent {
   numbers: number[] = [];
-  choice: boolean = false
+  sequence: string = '';
   aux: any;
 
   set() {
     if (!this.numbers.includes(this.aux)) {
       if (!(this.aux == null)) {
         this.numbers.push(this.aux);
-        this.aux = '';
+        this.aux = null;
       } else {
         alert('insira um número');
+        this.aux = null;
       }
-    }else{
-      alert('este número já foi inserido')
-      this.aux = ''
+    } else {
+      alert('este número já foi inserido');
+      this.aux = null;
     }
   }
 
-  order(choice: string = '') {
-    this.numbers.sort((a, b) => eval(choice));
+  order() {
+    this.numbers.sort((a, b) => eval(this.sequence));
   }
 }

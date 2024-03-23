@@ -1,12 +1,30 @@
-<h5>Select a number and press enter</h5>
-<input [(ngModel)]="aux" type="number" name="number" id="number" (keydown.enter)="set()" placeholder="">
-<button (click)="choice = !choice">{{choice ? 'crescente' : 'descrescente'}}</button>
-<div *ngIf="choice, else elseBlock">
-  {{order('a - b')}}
+<div class="d-flex justify-content-center align-items-center text-center vh-100">
+  <div class="card text-white bg-dark p-3">
+    <form>
+      <h5 class="mb-3">Select a number and press enter</h5>
+      <div class="row mb-3">
+        <div class="btn-group col" role="group" aria-label="Basic radio toggle button group">
+          <input class="btn-check" type="radio" name="btncrescent" id="btncrescent" [value]="'(a - b)'"
+            [(ngModel)]="sequence">
+          <label class="btn btn-outline-light" for="btncrescent">Crescent</label>
+          <input class="btn-check" type="radio" name="btndecrescent" id="btndecrescent" [value]="'(b - a)'"
+            [(ngModel)]="sequence">
+          <label class="btn btn-outline-light" for="btndecrescent">Decrescent</label>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="input-group col">
+          <input class="form-control" [(ngModel)]="aux" type="number" name="number" id="number" (keydown.enter)="set()">
+        </div>
+      </div>
+      {{order()}}
+      <div class="card p-3" *ngIf="numbers.length > 0">
+        <div class="row">
+          <div class="col" *ngFor="let number of numbers">
+            {{ number }}
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
 </div>
-<ng-template #elseBlock>
-  {{order('b - a')}}
-</ng-template>
-<ul>
-  <li *ngFor="let number of numbers">{{ number }}</li>
-</ul>
